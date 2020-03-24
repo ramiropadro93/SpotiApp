@@ -14,7 +14,7 @@ export class SpotifyService {
   //   const params = new HttpParams().set('grant_type','client_credentials')
   //                                  .set('client_id', '1043f7a6257c4a26a6e2a1991b90f1e0')
   //                                  .set('client_secret', '3ab9112f5d454586a052050d529bfbe5');
-  //   return this.http.post('https://accounts.spotify.com/api/token',{params})
+  //   return this.http.get('https://accounts.spotify.com/api/token',{params})
   // }
 
   public getQuery( query: string) {
