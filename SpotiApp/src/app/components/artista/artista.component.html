@@ -1,5 +1,12 @@
 <app-loading *ngIf="loading"></app-loading>
 
+<div class="alert alert-danger animated fadeIn" *ngIf="error">
+    <h3>Error</h3>
+    <p>
+        {{errorMessage}}
+    </p>
+</div>
+
 <div class="row animated fadeIn" *ngIf="!loading">
     <div class="col-2">
         <img [src]="artista.images | noimage" alt="" class="img-thumbnail img-circle"> </div>
@@ -15,5 +22,36 @@
         <button class="btn btn-outline-danger" routerLink="/search">
             Regresar
         </button>
+    </div>
+</div>
+
+<div class="row m-5">
+    <div class="col">
+        <table class="table bg-white">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Cancion</th>
+                    <th>Vista Previa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let topTrack of topTracks">
+                    <td>
+                        <img [src]="topTrack.album.images | noimage" class="img-thumbnail img-circle">
+                    </td>
+                    <td>
+                        {{topTrack.album.name}}
+                    </td>
+                    <td>
+                        {{topTrack.name}}
+                    </td>
+                    <td>
+                        <iframe [src]=" topTrack.id | domseguro" width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

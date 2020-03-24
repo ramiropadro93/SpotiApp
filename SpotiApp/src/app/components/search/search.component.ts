@@ -10,6 +10,9 @@ export class SearchComponent {
 
   public artistas: any[] = [];
   public loading: boolean;
+  error: boolean = false;
+  errorMessage: string;
+
   constructor(private spotify: SpotifyService) {
    }
 
@@ -18,6 +21,9 @@ export class SearchComponent {
     this.spotify.getArtistas(termino).subscribe((data: any) => {
       this.artistas = data;
       this.loading = false;
+    }, (errorServicio) => {
+      this.error = true;
+      this.errorMessage = errorServicio.error.error.message;
     });
   }
 
